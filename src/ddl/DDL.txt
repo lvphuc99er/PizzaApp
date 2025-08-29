@@ -1,0 +1,122 @@
+-- 1) NhanVien.java
+CREATE TABLE NhanVien (
+    maNV INT PRIMARY KEY,
+    ho VARCHAR(255),
+    ten VARCHAR(255),
+    gioiTinh VARCHAR(50),
+    chucVu VARCHAR(255)
+);
+insert into NhanVien values (17053301, 'Nguyen', 'Van An', 'Nam', 'Admin');
+
+-- 2) TaiKhoan.java
+CREATE TABLE TaiKhoan (
+    maNV INT PRIMARY KEY,
+    tenDangNhap VARCHAR(255),
+    matKhau VARCHAR(255),
+    quyen VARCHAR(255),
+    trangThai INT
+);
+insert into TaiKhoan values (17053301, 'admin', '123456', 'admin', 1);
+
+-- 3) PhanQuyen.java
+CREATE TABLE PhanQuyen (
+    quyen VARCHAR(255) PRIMARY KEY,
+    nhapHang INT,
+    qlSanPham INT,
+    qlNhanVien INT,
+    qlKhachHang INT,
+    thongKe INT
+);
+insert into PhanQuyen values ('admin', 1, 1, 1, 1, 1);
+
+-- 4) NhaCungCap.java
+CREATE TABLE NhaCungCap (
+    maNCC INT PRIMARY KEY,
+    tenNCC VARCHAR(255),
+    diaChi VARCHAR(255),
+    dienThoai VARCHAR(50)
+);
+
+-- 5) PhieuNhap.java
+CREATE TABLE PhieuNhap (
+    maPN INT PRIMARY KEY,
+    maNCC INT,
+    maNV INT,
+    ngayLap DATE,
+    tongTien INT
+);
+
+-- 6) CTHoaDon.java
+CREATE TABLE CTHoaDon (
+    maHD INT,
+    maSP INT,
+    soLuong INT,
+    donGia INT,
+    thanhTien INT,
+    PRIMARY KEY (maHD, maSP)
+);
+
+-- 7) CTPhieuNhap.java
+CREATE TABLE CTPhieuNhap (
+    maPN INT,
+    maSP INT,
+    soLuong INT,
+    donGia INT,
+    thanhTien INT,
+    PRIMARY KEY (maPN, maSP)
+);
+
+-- 8) KhachHang.java
+CREATE TABLE KhachHang (
+    maKH INT PRIMARY KEY,
+    ho VARCHAR(255),
+    ten VARCHAR(255),
+    gioiTinh VARCHAR(50),
+    tongChiTieu INT,
+    tinhTrang INT
+);
+insert into KhachHang values (17053302, 'Nguyen', 'Van A', 'Nam', 1000000, 1);
+
+-- 9) LoaiSP.java
+CREATE TABLE Loai (
+    maLoai INT PRIMARY KEY,
+    tenLoai VARCHAR(255)
+);
+
+-- 10) GiamGia.java
+CREATE TABLE GiamGia (
+    maGiam INT PRIMARY KEY,
+    tenGiamGia VARCHAR(255),
+    phanTramGiam INT,
+    dieuKien INT,
+    ngayBD DATE,
+    ngayKT DATE
+);
+
+-- 11) HoaDon.java 
+CREATE TABLE HoaDon (
+    maHD INT PRIMARY KEY,
+    maKH INT,
+    maNV INT,
+    ngayLap DATE,
+    tongTien INT,
+    ghiChu VARCHAR(255)
+);
+
+-- 12) ThongKe.java
+CREATE TABLE ThongKe (
+    soLuongSP INT,
+    soLuongKH INT,
+    soLuongNV INT
+);
+
+-- 13) SanPham.java
+CREATE TABLE SanPham (
+    maSP INT PRIMARY KEY,
+    tenSP VARCHAR(255),
+    maLoai INT,
+    soLuong INT,
+    donViTinh VARCHAR(100),
+    hinhAnh VARCHAR(255),
+    donGia INT
+);
